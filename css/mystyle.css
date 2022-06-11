@@ -1,7 +1,23 @@
-.tasksAvailable {
+body {
+
+}
+
+#tasksAvailable {
     display: none;
 }
 
-.addTask {
+#addTask {
     display: none;
+    position: fixed;
+    background-color: rgba(0,0,0,0.7);
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#addTask .taskContainer {
+    background-color: white;
+    width: 70%;
+    margin: 10% auto;
+    padding: 20px;
 }

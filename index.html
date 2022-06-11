@@ -10,30 +10,31 @@
 <body>
     <h1>To do app</h1>
     <h2>My To Do List</h2>
-    <input type="text" id="myInput" placeholder="Duties...">
-    <button onclick="myFunction()">Click me</button>
        
     <div class="noTasksAvailable">
         <p>You have no tasks available.</p>
         <button onclick="addTask()">Add task</button>
     </div>
 
-    <div class="tasksAvailable">
+    <div id="tasksAvailable">
         <ul>
             <li class="singleTask"></li>
         </ul>
     </div>
 
-    <div class="addTask">
-        <h3>Add new task</h3>
-        <input type="text" name="Title" placeholder="Title"/>
-        <input type="text" name="Description" placeholder="Description"/>
-        <input type="text" name="Date" placeholder="Date"/>
+    <div id="addTask">
+        <div class="taskContainer">
+            <h3>Add new task</h3>
+            <input type="text" name="Title" placeholder="Title"/>
+            <input type="text" name="Description" placeholder="Description"/>
+            <input type="text" name="Date" placeholder="Date"/>
 
-        <button onclick="saveTask()">Save task</button>
+            <button onclick="saveTask()">Save task</button>
+            <button onclick="closePopup()">Close</button>
+        </div>
     </div>
 
     <footer></footer>
-    <script src="JS/myscript.js"></script>
+    <script src="js/myscript.js"></script>
 </body>
 </html>
