@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To do app</title>
+</head>
+<body>
+    <h1>To do app</h1>
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Duties...">
+    <button onclick="myFunction()">Click me</button>
+       
+    <div class="noTasksAvailable">
+        <p>You have no tasks available.</p>
+        <button onclick="addTask()">Add task</button>
+    </div>
+
+    <div class="tasksAvailable">
+        <ul>
+            <li class="singleTask"></li>
+        </ul>
+    </div>
+
+    <div class="addTask">
+        <input type="text" name="Add task" placeholder="Add task"/>
+    </div>
+
+    <footer></footer>
+    <script src="JS/myscript.js"></script>
+</body>
+</html>
