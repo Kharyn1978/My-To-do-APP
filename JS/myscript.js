@@ -2,6 +2,18 @@ let popUp = document.getElementById("addTask");
 let noTasksAvailable = document.getElementById("noTasksAvailable");
 let tasksAvailable = document.getElementById("tasksAvailable");
 
+//if we have tasks
+if (localStorage.getItem("formObject") != null) {
+    let data = localStorage.getItem("formObject");
+    showTasks(data);
+    noTasksAvailable.style.display = 'none';
+    tasksAvailable.style.display = 'block';
+}
+else {
+    noTasksAvailable.style.display = 'block';
+    tasksAvailable.style.display = 'none';
+}
+
 //function for the addTask popUp
 function addTask() {
     popUp.style.display = "block";
@@ -27,7 +39,7 @@ function saveTask() {
     }
 
     localStorage.setItem("formObject",JSON.stringify(formObject));
-
+    //send the object to showTasks function
     showTasks(formObject);
 }
 
@@ -38,5 +50,12 @@ function showTasks(element) {
 
     //then show 'tasks available' div
     tasksAvailable.style.display = "block";
+
+
+    let formObject = JSON.parse(element);
+
+    let liElement = document.createElement("li");
+    liElement.appendChild(document.createTextNode(formObject.title));
+    document.getElementById("allTasks").appendChild(liElement);
 }
 
