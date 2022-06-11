@@ -1,4 +1,6 @@
-let popUp =  document.getElementById("addTask");
+let popUp = document.getElementById("addTask");
+let noTasksAvailable = document.getElementById("noTasksAvailable");
+let tasksAvailable = document.getElementById("tasksAvailable");
 
 //function for the addTask popUp
 function addTask() {
@@ -25,5 +27,16 @@ function saveTask() {
     }
 
     localStorage.setItem("formObject",JSON.stringify(formObject));
+
+    showTasks(formObject);
+}
+
+//function to populate tasks
+function showTasks(element) {
+    //first hide the 'no tasks available' div
+    noTasksAvailable.style.display = "none";
+
+    //then show 'tasks available' div
+    tasksAvailable.style.display = "block";
 }
 
