@@ -5,7 +5,8 @@ let tasksAvailable = document.getElementById("tasksAvailable");
 //if we have tasks
 if (localStorage.getItem("formObject") != null) {
     let data = localStorage.getItem("formObject");
-    showTasks(data);
+
+    showTasks(JSON.parse(data));
     noTasksAvailable.style.display = 'none';
     tasksAvailable.style.display = 'block';
 }
@@ -32,15 +33,27 @@ function saveTask() {
     let taskDescription = form.elements["description"].value;
     let taskDate = form.elements["date"].value;
 
+    //new array to store info from localStorage, if we have it
+    let allTasksArray = [];
+    if (localStorage.getItem("formObject") != null) {
+        allTasksArray.push(localStorage.getItem("formObject"));
+        console.log(allTasksArray);
+        console.log(JSON.parse(localStorage.getItem("formObject")));
+    }
+
+    //our new task
     let formObject = {
         title: taskTitle,
         description: taskDescription,
         date: taskDate
-    }
+    };
 
-    localStorage.setItem("formObject",JSON.stringify(formObject));
+    //now we push the new task in the array
+    allTasksArray.push(formObject);
+
+    localStorage.setItem("formObject",JSON.stringify(allTasksArray));
     //send the object to showTasks function
-    showTasks(formObject);
+    showTasks(allTasksArray);
 }
 
 //function to populate tasks
@@ -52,10 +65,10 @@ function showTasks(element) {
     tasksAvailable.style.display = "block";
 
 
-    let formObject = JSON.parse(element);
+    //let formObject = JSON.parse(element);
 
     let liElement = document.createElement("li");
-    liElement.appendChild(document.createTextNode(formObject.title));
+    liElement.appendChild(document.createTextNode(element[0].title));
     document.getElementById("allTasks").appendChild(liElement);
 }
 
