@@ -17,6 +17,8 @@ function saveTask() {
     let title = form.elements["title"].value;
     let description = form.elements["description"].value;
     let date = form.elements["date"].value;
+
+    localStorage.setItem("lastname", "Smith");
     
     console.log(title);
 }
