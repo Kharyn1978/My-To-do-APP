@@ -14,12 +14,16 @@ function closeTask() {
 function saveTask() {
     let form = document.getElementById("taskForm");
 
-    let title = form.elements["title"].value;
-    let description = form.elements["description"].value;
-    let date = form.elements["date"].value;
+    let taskTitle = form.elements["title"].value;
+    let taskDescription = form.elements["description"].value;
+    let taskDate = form.elements["date"].value;
 
-    localStorage.setItem("lastname", "Smith");
-    
-    console.log(title);
+    let formObject = {
+        title: taskTitle,
+        description: taskDescription,
+        date: taskDate
+    }
+
+    localStorage.setItem("formObject",JSON.stringify(formObject));
 }
 
