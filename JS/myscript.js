@@ -49,6 +49,10 @@ function showTasks(element) {
         //create li element
         let liElement = document.createElement("li");
 
+        let liStatus = document.createElement("span");//<span></span>
+        liStatus.innerText = "TO DO";//<span>TO DO</span>
+        liStatus.setAttribute("class","taskStatus");//<span class="taskStatus">...
+
         let liText = document.createElement("span");
         liText.innerText = "Title: " + item.title;
         liText.setAttribute("class","taskTitle");
@@ -64,13 +68,17 @@ function showTasks(element) {
         //create "mark as done" and "remove" buttons
         let markAsDoneButton = document.createElement("button");
         markAsDoneButton.innerText = "Mark as done";
-        markAsDoneButton.setAttribute("onclick","markTask()");
+        markAsDoneButton.setAttribute("onclick","markTask(this,"+ item.status +")");
 
         let removeTaskButton = document.createElement("button");
         removeTaskButton.innerText = "Remove";
         removeTaskButton.setAttribute("onclick","removeTask(this)");
 
-        liElement.append(liText,liDesc,liDate);
+        liElement.append(liStatus,liText,liDesc,liDate);
+        //<li>
+        //<span class="taskStatus">TO DO</span>
+        //....
+        //</li>
 
         //add buttons
         liElement.append(markAsDoneButton,removeTaskButton);
@@ -101,7 +109,8 @@ function saveTask() {
     let formObject = {
         title: taskTitle,
         description: taskDescription,
-        date: taskDate
+        date: taskDate,
+        status: false
     };
 
     //now we push the new task in the array
@@ -133,7 +142,6 @@ function removeTask(thisTask) {
         temp.forEach(function (item, index) {
             if(index === indexToRemove){
                 temp.splice(index, 1);
-                console.log('here',item,index,temp);
             }
         });
 
@@ -146,5 +154,39 @@ function removeTask(thisTask) {
         localStorage.removeItem("formObject");
     }
 
+
+    //show the correct screen if all items are removed
+    if (JSON.parse(localStorage.getItem("formObject")).length > 0) {
+        localStorage.removeItem("formObject");
+        noTasksAvailable.style.display = 'block';
+        tasksAvailable.style.display = 'none';
+    }
+
 }
 
+function markTask(thisTask, currentFlag) {
+
+    //get the specific task name/info
+    let child = thisTask.parentNode;
+    let parent = child.parentNode;
+
+    //get the index of the item to change, that is aligned to the data in localStorage
+    let indexToChange = Array.prototype.indexOf.call(parent.children, child);
+console.log(thisTask, child,parent);
+
+    if (!currentFlag) {
+        child.getElementsByClassName("taskStatus").innerHTML = "DONE";
+         //create temp array, change item, then add this array as new localStorage
+        let temp = JSON.parse(localStorage.getItem("formObject"));
+
+        temp.forEach(function (item, index) {
+            if(index === indexToChange){
+                item.status = true;
+            }
+        });
+
+        localStorage.setItem("formObject",JSON.stringify(temp));
+        showTasks(temp);
+        console.log(child.getElementsByClassName("taskStatus"));
+    }
+}
