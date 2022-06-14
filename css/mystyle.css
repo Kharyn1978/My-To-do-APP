@@ -1,5 +1,5 @@
 body {
-
+    background-image: url(../sourcefolder/digitalrouge.jpg);
 }
 
 #tasksAvailable {
@@ -16,8 +16,12 @@ body {
 }
 
 #addTask .taskContainer {
-    background-color: white;
+    background-color: rgb(134, 226, 207);
     width: 70%;
     margin: 10% auto;
     padding: 20px;
+}
+
+#tasksAvailable{
+    display: block
 }
