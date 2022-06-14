@@ -22,13 +22,14 @@ body {
     padding: 20px;
 }
 
-#tasksAvailable{
+#tasksAvailable {
     display: block
 }
-
-#headshot {
- 
-    border-radius: 40%;
-    position: relative;
   
+#headshot {
+    object-position: right top;
+    border-radius: 50%;
+    position: relative;
+    width: 10% ;
+    height: 10% ;
   }
