@@ -1,5 +1,5 @@
 body {
-    background-image: url(../sourcefolder/digitalrouge.jpg);
+    background-image: url(../sourcefolder/neutralbackground.jpg);
 }
 
 #tasksAvailable {
@@ -25,3 +25,10 @@ body {
 #tasksAvailable{
     display: block
 }
+
+#headshot {
+ 
+    border-radius: 40%;
+    position: relative;
+  
+  }
