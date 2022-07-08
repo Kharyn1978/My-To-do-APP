@@ -156,7 +156,7 @@ function removeTask(thisTask) {
 
 
     //show the correct screen if all items are removed
-    if (JSON.parse(localStorage.getItem("formObject")).length > 0) {
+    if (JSON.parse(localStorage.getItem("formObject")).length === 0) {
         localStorage.removeItem("formObject");
         noTasksAvailable.style.display = 'block';
         tasksAvailable.style.display = 'none';
